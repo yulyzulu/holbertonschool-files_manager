@@ -6,11 +6,11 @@ class RedisClient {
     this.client = redis.createClient();
     this.getAsync = promisify(this.client.get).bind(this.client);
 
-    this.client.on('error', function(error) {
+    this.client.on('error', (error) => {
       console.error(error);
     });
 
-    this.client.on('connect', function() {
+    this.client.on('connect', () => {
       //console.log('Connected server');
     });
   }
