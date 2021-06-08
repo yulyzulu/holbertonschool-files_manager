@@ -6,10 +6,6 @@ class RedisClient {
     this.client = redis.createClient();
     this.getAsync = promisify(this.client.get).bind(this.client);
 
-    //this.client.on('connect', function() {
-      //console.log('Connected server');
-    //});
-
     this.client.on('error', function(error) {
       console.error(error);
     });
@@ -28,7 +24,7 @@ class RedisClient {
   }
 
   async get(key) {
-    const val = this.getAsync(key);
+    const val = await this.getAsync(key);
     return val;
   }
   async set(key, value, time) {
