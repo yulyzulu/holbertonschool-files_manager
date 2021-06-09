@@ -9,8 +9,8 @@ function getStatus(req, res) {
 
 function getStats(req, res) {
   const users = dbClient.nbUsers();
-  const files = db.nbFiles();
-  res.status(200).json({ users: users, files: files });
+  const files = dbClient.nbFiles();
+  res.status(200).json({ users, files });
 }
 
 module.exports = { getStatus, getStats };
