@@ -11,7 +11,7 @@ class RedisClient {
     });
 
     this.client.on('connect', () => {
-      //console.log('Connected server');
+      // console.log('Connected server');
     });
   }
 
@@ -26,6 +26,7 @@ class RedisClient {
     const val = await this.getAsync(key);
     return val;
   }
+
   async set(key, value, time) {
     this.client.setex(key, time, value);
   }
